@@ -8,6 +8,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET", "POST"])
 def api_root():
+    return 'Home'
     data = request.json
     #print(data["data"]["id"])
 
@@ -57,19 +58,7 @@ def api_root():
     else:
         print(f"Request failed with status code {response.status_code}")
 
-    '''
-    print (request.headers['Content-Type'])
-    if request.headers['Content-Type'] != 'application/json':
-        data = request.headers['Content-Type']
-        return data
-    '''
-    """
-    if request.method == "POST":
-        print(request.json)
-        return 'success', 200
-    else:
-        return 'failure'
-    """
+    
     #print(request.data)
 
 
@@ -77,19 +66,7 @@ def api_root():
     return 'Home page'
 
 
-@app.route('/smoobu', methods=["GET", "POST"])
-def api_smoobu_message():
-    if request.is_json:
-        print(request.data)
-    else:
-        return render_template('data.html')
-    """"
-    if request.headers['Content-Type'] == 'application/json':
-        my_info = json.dumps(request.json)
-        print (my_info)
-        return my_info
-    """
-    #return json.dumps(request.json)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
